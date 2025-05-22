@@ -1,0 +1,35 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BUCKET_URL = exports.Prosite_URL = exports.ADSPACE_MERCHANT_ID = exports.ADSPACE_PHONE_PAY_KEY = exports.MESSAGE_BUCKET = exports.RAZORPAY_SECRET = exports.RAZORPAY_KEY_ID = exports.MSG_URL = exports.PRODUCT_URL = exports.TESTDB = exports.NEXO_URL = exports.NEXO_BUCKET = exports.PRODDB = exports.POST_URL = exports.AD_URL = exports.URL = exports.ADS_BUCKET = exports.PRODUCT_BUCKET = exports.POST_BUCKET = exports.BUCKET_NAME = exports.MY_SECRET_KEY = exports.AWS_SECRET_KEY = exports.AWS_ACCESS_KEY = exports.BUCKET_REGION = exports.DATABASE = exports.PORT = void 0;
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+exports.PORT = process.env.PORT;
+exports.DATABASE = process.env.DATABASE || "";
+exports.BUCKET_REGION = process.env.BUCKET_REGION || "";
+exports.AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY || "";
+exports.AWS_SECRET_KEY = process.env.AWS_SECRET_KEY || "";
+exports.MY_SECRET_KEY = process.env.MY_SECRET_KEY || "";
+exports.BUCKET_NAME = process.env.BUCKET_NAME || "bucage";
+exports.POST_BUCKET = process.env.POST_BUCKET || "post-ing";
+exports.PRODUCT_BUCKET = process.env.PRODUCT_BUCKET || "product-s";
+exports.ADS_BUCKET = process.env.ADS_BUCKET || "offervibes";
+exports.URL = process.env.URL || "https://dn3w8358m09e7.cloudfront.net/";
+exports.AD_URL = "https://dp5wpbz0px6y7.cloudfront.net/";
+exports.POST_URL = process.env.POST_URL || "https://dt46iilh1kepb.cloudfront.net/";
+exports.PRODDB = process.env.PRODDB;
+exports.NEXO_BUCKET = process.env.NEXO_BUCKET || "nexoo";
+exports.NEXO_URL = process.env.Nexoo_URL || "https://d3o079xut1n1hu.cloudfront.net/";
+exports.TESTDB = process.env.TESTDB ||
+    "mongodb://admin:admin123@13.201.18.253:27017/?authMechanism=DEFAULT";
+exports.PRODUCT_URL = process.env.PRODUCT_URL || "https://d2a79j8kmqfrmq.cloudfront.net/";
+exports.MSG_URL = process.env.MSG_URL || "https://d3k9hx3li2ssij.cloudfront.net/";
+exports.RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID || "";
+exports.RAZORPAY_SECRET = process.env.RAZORPAY_SECRET || "";
+exports.MESSAGE_BUCKET = process.env.MESSAGE_BUCKET || "";
+exports.ADSPACE_PHONE_PAY_KEY = process.env.ADSPACE_PHONE_PAY_KEY;
+exports.ADSPACE_MERCHANT_ID = process.env.ADSPACE_MERCHANT_ID;
+exports.Prosite_URL = process.env.Prosite_URL;
+exports.BUCKET_URL = process.env.BUCKET_URL;

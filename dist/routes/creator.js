@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const multer_1 = __importDefault(require("multer"));
+const creator_js_1 = require("../controllers/creator.js");
+const offer_js_1 = require("../controllers/offer.js");
+const upload = (0, multer_1.default)({ storage: multer_1.default.memoryStorage() });
+const creatorrouter = express_1.default.Router();
+creatorrouter.post("/postCreator", upload.single("creatorImage"), creator_js_1.postCreator);
+creatorrouter.get("/getCreators", creator_js_1.getCreator);
+creatorrouter.get("/getCreatorsAdmin", creator_js_1.getCreatorsAdmin);
+creatorrouter.post("/deleteCreator/:id", creator_js_1.deleteCreator);
+creatorrouter.get("/searchCreators", creator_js_1.searchCreators);
+creatorrouter.post("/qurey", creator_js_1.contactus);
+creatorrouter.get("/getQurey", creator_js_1.getContactus);
+creatorrouter.post("/deletestore/:id", creator_js_1.deletestore);
+creatorrouter.post("/deleteOffer/:id", offer_js_1.deleteOffer);
+exports.default = creatorrouter;
