@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Offer from "../models/offer.js";
-import { uploads3 } from "../utils/s3.config.js";
-import { ADS_BUCKET, BUCKET_URL } from "../utils/config.js";
+import { pre_s3, uploads3 } from "../utils/s3.config.js";
+import { ADS_BUCKET, BUCKET_NAME, BUCKET_URL } from "../utils/config.js";
 
 interface OfferRequestBody {
   id?: string; // Optional ID field
@@ -188,6 +188,31 @@ export const postOffer = async (req: Request, res: Response): Promise<void> => {
     }
 
     res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const presigned = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { fileName, fileType } = req.body;
+
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: `projects}/uploads/${fileName}`,
+      Expires: 60,
+      ContentType: fileType,
+    };
+
+    const uploadURL = await pre_s3.getSignedUrlPromise("putObject", params);
+    res.json({
+      uploadURL,
+      url: `${BUCKET_URL}/projects/uploads/${fileName}`,
+      key: params.Key,
+      success: true,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to generate pre-signed URL" });
   }
 };
 

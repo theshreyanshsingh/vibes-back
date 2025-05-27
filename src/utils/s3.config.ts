@@ -3,7 +3,7 @@ import {
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
-
+import AWS from "aws-sdk";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { AWS_ACCESS_KEY, AWS_SECRET_KEY, BUCKET_REGION } from "./config";
 
@@ -14,6 +14,16 @@ const s3 = new S3Client({
     secretAccessKey: AWS_SECRET_KEY,
   },
 });
+
+// Configure AWS SDK
+AWS.config.update({
+  region: BUCKET_REGION,
+  accessKeyId: AWS_ACCESS_KEY,
+  secretAccessKey: AWS_SECRET_KEY,
+});
+
+export const pre_s3 = new AWS.S3();
+
 const deleteFiles3 = async (bucket: string, key: string) => {
   await s3.send(
     new DeleteObjectCommand({
